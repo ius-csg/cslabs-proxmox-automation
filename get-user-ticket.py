@@ -18,7 +18,7 @@ proxmox = ProxmoxAPI(proxmox_host, user=proxmox_user, password=proxmox_password,
 resp = proxmox.access.ticket.post(username=proxmox_user, password=proxmox_password)
 
 ticket = resp['ticket']
-url_encoded_ticket = urllib.parse.quote(ticket, safe='');
+url_encoded_ticket = urllib.parse.quote(ticket);
 # PVEAuthCookie=
 
 with open(configuration_path, 'r') as f:
