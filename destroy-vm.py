@@ -10,6 +10,6 @@ proxmox = ProxmoxAPI(proxmox_host, user=proxmox_user, password=proxmox_password,
 
 proxmox.nodes('pve').qemu().delete(vm_id)
 
-
+print("success")
 
 

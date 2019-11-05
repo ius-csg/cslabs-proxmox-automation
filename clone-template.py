@@ -19,5 +19,7 @@ max_id = int(max(vm_ids))
 new_id = max_id + 1
 proxmox.nodes('pve').qemu().post(template_vm_id + '/clone', newid=new_id)
 
+print(new_id)
+
 
 
