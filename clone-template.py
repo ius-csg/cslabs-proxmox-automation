@@ -4,7 +4,8 @@ from proxmoxer import ProxmoxAPI
 proxmox_host = sys.argv[1]
 proxmox_user = sys.argv[2]
 proxmox_password = sys.argv[3]
-template_vm_id = sys.argv[4]
+proxmox_node = sys.argv[4]
+template_vm_id = sys.argv[5]
 
 proxmox = ProxmoxAPI(proxmox_host, user=proxmox_user, password=proxmox_password, verify_ssl=False)
 
@@ -16,7 +17,7 @@ for node in proxmox.nodes.get():
 
 max_id = int(max(vm_ids))
 new_id = max_id + 1
-proxmox.nodes('a1').qemu().post(template_vm_id + '/clone', newid=new_id)
+proxmox.nodes(proxmox_node).qemu().post(template_vm_id + '/clone', newid=new_id)
 
 print(new_id)
 
