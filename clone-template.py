@@ -11,13 +11,12 @@ proxmox = ProxmoxAPI(proxmox_host, user=proxmox_user, password=proxmox_password,
 vm_ids = []
 
 for node in proxmox.nodes.get():
-    print(node['node'])
     for vm in proxmox.nodes(node['node']).qemu.get():
         vm_ids.append(vm['vmid'])
 
 max_id = int(max(vm_ids))
 new_id = max_id + 1
-proxmox.nodes('pve').qemu().post(template_vm_id + '/clone', newid=new_id)
+proxmox.nodes('a1').qemu().post(template_vm_id + '/clone', newid=new_id)
 
 print(new_id)
 
