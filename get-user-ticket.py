@@ -1,6 +1,4 @@
 import sys
-import json
-import requests
 import re
 import urllib.parse
 from proxmoxer import ProxmoxAPI
@@ -9,8 +7,7 @@ proxmox_host = sys.argv[1]
 proxmox_user = sys.argv[2]
 proxmox_password = sys.argv[3]
 proxmox_node = sys.argv[4]
-vm_id = sys.argv[5]
-configuration_path = sys.argv[6]
+configuration_path = sys.argv[5]
 
 proxmox = ProxmoxAPI(proxmox_host, user=proxmox_user, password=proxmox_password, verify_ssl=False)
 
@@ -18,8 +15,7 @@ proxmox = ProxmoxAPI(proxmox_host, user=proxmox_user, password=proxmox_password,
 resp = proxmox.access.ticket.post(username=proxmox_user, password=proxmox_password)
 
 ticket = resp['ticket']
-url_encoded_ticket = urllib.parse.quote(ticket);
-# PVEAuthCookie=
+url_encoded_ticket = urllib.parse.quote(ticket)
 
 with open(configuration_path, 'r') as f:
     content = f.read()
